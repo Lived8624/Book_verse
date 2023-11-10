@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+
+      We have a variety of products.
+
+{% endblock %}
+
+{% block title %}
+search
+{% endblock %}
+
+{% block content %}
+<div>
+    <p class="text-center my_search_text">
+            You have searched for :<b>"{{ query }}"</b>
+    </p>
+</div>
+
+<div class="container">
+    <div class="row mx_auto">
+      {% for product in products  %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-lg-4" style="transform: translateY(-5px); ">
+          <div class="card text-center" style="min-width:18rem; width: 250px; height: 350px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); margin: 10px; display: inline-block; overflow: hidden; transition: transform 0.2s;">
+            <a href="{{ product.get_url }}">
+              <img class="card-img-top my_image" src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 100%; max-height: 60%; display: block; margin: 0 auto; padding: 10px;">
+            </a>
+            <div class="card-body">
+              <h4 style="text-transform: uppercase; letter-spacing: .2em; font-size: 1.25rem; margin: 0;">{{ product.name }}</h4>
+              <p style=" font-size: 1.5rem; font-weight: bold; margin: 10px 0;">{{ product.price }}</p>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="text-center my_search_text"> 0 results found</div>
+    </div>
+    {% endfor %}
+</div>
+    {% endblock %}
