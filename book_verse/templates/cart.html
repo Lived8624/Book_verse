@@ -40,7 +40,8 @@
                         {% for cart_item in cart_items %}
                         <tr>
                             <td>
-                                <a href="cart_item.product.get_absolute_url">
+                                <a href="{{ cart_item.product.get_url }}">
+
                                     <img src="{{ cart_item.product.image.url }}" style="width: 150px; height: 150px; display: block; margin: 0 auto; padding: 10px;" alt="" class="float-left rounded custom_image">
                                 </a>
                             </td>
@@ -116,6 +117,30 @@
                 </tr>
                 </tbody>
             </table>
+            <div>
+                <button onclick="processPayment()" style="background-color: #4CAF50; /* Green */
+                 border: none;
+                 color: white;
+                 padding: 15px 32px;
+                 text-align: center;
+                 text-decoration: none;
+                 display: inline-block;
+                 font-size: 16px;
+                 margin: 4px 2px;
+                 transition-duration: 0.4s;
+                 cursor: pointer;
+                 border-radius: 10px;">
+    Pay Now
+  </button>
+  <script>
+    function processPayment() {
+      // In a real-world scenario, this is where you would integrate with a payment gateway
+      alert('Payment option not available at the moment. Please try again after some time.');
+      // Here, you would typically redirect the user to the actual payment page or show a modal for payment.
+      // The actual implementation would depend on the payment provider you are using.
+    }
+  </script>
+            </div>
             <div class="mx-auto">
                 <a href="{% url 'shop:allProdCat' %}" class="btn btn-secondary btn-block my_custom_button"> Continue Shopping</a>
             </div>
